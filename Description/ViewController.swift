@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreML
+import Vision
 
 class ViewController: UIViewController {
     
@@ -24,11 +25,43 @@ class ViewController: UIViewController {
         imagePicker.sourceType = .photoLibrary
         
     }
-
     
     @IBAction func libraryBarButtonPressed(_ sender: UIBarButtonItem) {
         // activation method imagePickerController
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    //MARK: - CoreML method
+    func identification(_ image: UIImage) {
+        
+        // add Core ML model
+        guard let model = try? VNCoreMLModel(for: FlowerClassifier(configuration: MLModelConfiguration()).model) else { return }
+        
+        // add request
+        let request = VNCoreMLRequest(model: model) { (request, error) in
+            
+            // get all results
+            guard let results = request.results as? [VNClassificationObservation] else { return }
+            
+            // get first confident result
+            guard let first = results.first?.identifier else { return }
+            
+            // show first confident result as bar title
+            self.navigationItem.title = first
+        }
+        
+        // convert UIImage to CIImage
+        guard let ciImage = CIImage(image: image) else { return }
+        
+        let handler = VNImageRequestHandler(ciImage: ciImage)
+        
+        //perform Vision framework
+        do {
+            try handler.perform([request])
+        } catch { print(error.localizedDescription)}
+        
+        
+        
     }
     
 
@@ -45,6 +78,8 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         
         // set image by default on the screen
         descriptionImage.image = image
+        
+        identification(image)
         
         // avoid freezing app
         imagePicker.dismiss(animated: true, completion: nil)
