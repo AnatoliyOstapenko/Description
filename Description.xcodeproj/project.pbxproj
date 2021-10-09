@@ -14,6 +14,8 @@
 		FA3CB9CA271196B200AEC10F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3CB9C9271196B200AEC10F /* Assets.xcassets */; };
 		FA3CB9CD271196B200AEC10F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3CB9CB271196B200AEC10F /* LaunchScreen.storyboard */; };
 		FA3CB9DE2711990500AEC10F /* FlowerClassifier.mlkitmodel in Sources */ = {isa = PBXBuildFile; fileRef = FA3CB9DD2711990500AEC10F /* FlowerClassifier.mlkitmodel */; };
+		FA3CB9EC2711ADDF00AEC10F /* ManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CB9EB2711ADDF00AEC10F /* ManagerModel.swift */; };
+		FA3CB9EF2711AE0C00AEC10F /* DescriptionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3CB9EE2711AE0C00AEC10F /* DescriptionData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		FA3CB9CC271196B200AEC10F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA3CB9CE271196B200AEC10F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA3CB9DD2711990500AEC10F /* FlowerClassifier.mlkitmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FlowerClassifier.mlkitmodel; sourceTree = "<group>"; };
+		FA3CB9EB2711ADDF00AEC10F /* ManagerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerModel.swift; sourceTree = "<group>"; };
+		FA3CB9EE2711AE0C00AEC10F /* DescriptionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +64,40 @@
 			children = (
 				FA3CB9C0271196AE00AEC10F /* AppDelegate.swift */,
 				FA3CB9C2271196AE00AEC10F /* SceneDelegate.swift */,
-				FA3CB9C4271196AE00AEC10F /* ViewController.swift */,
-				FA3CB9C6271196AE00AEC10F /* Main.storyboard */,
+				FA3CB9E12711AD1D00AEC10F /* Model */,
+				FA3CB9E52711AD4C00AEC10F /* View */,
+				FA3CB9E32711AD3900AEC10F /* Controller */,
 				FA3CB9C9271196B200AEC10F /* Assets.xcassets */,
 				FA3CB9CB271196B200AEC10F /* LaunchScreen.storyboard */,
-				FA3CB9DD2711990500AEC10F /* FlowerClassifier.mlkitmodel */,
 				FA3CB9CE271196B200AEC10F /* Info.plist */,
 			);
 			path = Description;
+			sourceTree = "<group>";
+		};
+		FA3CB9E12711AD1D00AEC10F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA3CB9DD2711990500AEC10F /* FlowerClassifier.mlkitmodel */,
+				FA3CB9EB2711ADDF00AEC10F /* ManagerModel.swift */,
+				FA3CB9EE2711AE0C00AEC10F /* DescriptionData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FA3CB9E32711AD3900AEC10F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA3CB9C4271196AE00AEC10F /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FA3CB9E52711AD4C00AEC10F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA3CB9C6271196AE00AEC10F /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,8 +170,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA3CB9EF2711AE0C00AEC10F /* DescriptionData.swift in Sources */,
 				FA3CB9C5271196AE00AEC10F /* ViewController.swift in Sources */,
 				FA3CB9C1271196AE00AEC10F /* AppDelegate.swift in Sources */,
+				FA3CB9EC2711ADDF00AEC10F /* ManagerModel.swift in Sources */,
 				FA3CB9C3271196AE00AEC10F /* SceneDelegate.swift in Sources */,
 				FA3CB9DE2711990500AEC10F /* FlowerClassifier.mlkitmodel in Sources */,
 			);
