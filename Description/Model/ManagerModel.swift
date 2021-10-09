@@ -14,17 +14,34 @@ protocol ManagerDelegate {
 
 struct ManagerModel {
     
-    let managerDelegate: ManagerDelegate?
+    // set ManagerDelegate as variable only
+    var managerDelegate: ManagerDelegate?
     
-    let wikiURL = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles="
+    private let wikiURL = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&indexpageids&redirects=1&titles="
     
     // get title - name of a flower
     func getTitle(_ title: String) {
         
-        let fullURL = wikiURL + title
-        performRequest(fullURL)
+        let components = title.split{ !$0.isLetter }
+        var item = ""
         
+        switch components.count {
+        case 2:
+            item = "\(wikiURL)\(components[0])%20\(components[1])"
+        case 3:
+            item = "\(wikiURL)\(components[0])%20\(components[1])%20\(components[2])"
+        default:
+            item = "\(wikiURL)\(components[0])"
+        }
+       
+        performRequest(item)
+       
     }
+    
+    
+    
+    
+    
     // get API Data by url
     func performRequest(_ url: String) {
         
@@ -54,9 +71,12 @@ struct ManagerModel {
             
             guard let extract = decodedData.query.pages[pageId]?.extract else { return }
             
+            print("extract from parsing JSON: \(extract)")
+            
+            
             managerDelegate?.updateData(extract)
             
-        } catch { print(error)}
+        } catch { print(error) }
         
         
         

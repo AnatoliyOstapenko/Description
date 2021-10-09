@@ -11,6 +11,9 @@ import Vision
 
 class ViewController: UIViewController {
     
+    // initialize ManagerModel
+    var managerModel = ManagerModel()
+    
     let imagePicker = UIImagePickerController()
     
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -23,6 +26,9 @@ class ViewController: UIViewController {
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
+        
+        //activate Manager Delegate
+        managerModel.managerDelegate = self
         
     }
     
@@ -48,6 +54,9 @@ class ViewController: UIViewController {
             
             // show first confident result as bar title
             self.navigationItem.title = first
+            
+            // dispatch title
+            self.managerModel.getTitle(first)
         }
         
         // convert UIImage to CIImage
@@ -86,5 +95,17 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         
         
     }
+}
+
+extension ViewController: ManagerDelegate {
+    func updateData(_ extract: String) {
+        
+        DispatchQueue.main.async {
+            
+            self.descriptionLabel.text = extract
+        }
+        
+    }
+ 
 }
 
