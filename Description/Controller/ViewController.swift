@@ -98,11 +98,13 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
 }
 
 extension ViewController: ManagerDelegate {
+    
     func updateData(_ extract: String) {
         
         DispatchQueue.main.async {
             
             self.descriptionLabel.text = extract
+            
         }
         
     }

@@ -22,6 +22,7 @@ struct ManagerModel {
     // get title - name of a flower
     func getTitle(_ title: String) {
         
+        // method to put %20 in url string
         let components = title.split{ !$0.isLetter }
         var item = ""
         
@@ -33,15 +34,10 @@ struct ManagerModel {
         default:
             item = "\(wikiURL)\(components[0])"
         }
-       
         performRequest(item)
        
     }
-    
-    
-    
-    
-    
+
     // get API Data by url
     func performRequest(_ url: String) {
         
